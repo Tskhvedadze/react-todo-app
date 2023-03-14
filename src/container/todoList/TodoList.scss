@@ -1,0 +1,37 @@
+.todoList {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5rem;
+    margin: 1rem 0;
+    background-color: #5dadf8;
+    padding: 1rem 2rem;
+    width: 45rem;
+    align-items: center;
+    list-style: none;
+
+    &__bnts {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    span {
+        flex: 1;
+    }
+}
+
+.done {
+    text-decoration: line-through black;
+}
+
+.textInput {
+    display: flex;
+    width: auto;
+    padding: 10px;
+    border: 1px solid #dfdfdf;
+    outline: none;
+}
+
+.viweMode {
+    display: none;
+}
