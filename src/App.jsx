@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 
+import { ListContext } from './context/list.Context'
 import { TodoList, Button, Input } from './components'
 
 import { MdAddTask } from 'react-icons/md'
@@ -7,36 +8,7 @@ import { MdAddTask } from 'react-icons/md'
 import './App.scss'
 
 function App() {
-    const [value, setValue] = useState('')
-    const [list, setList] = useState([])
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        if (value !== '') {
-            setList((prev) => {
-                return [...prev, { id: `${Date.now()}`, value }]
-            })
-            setValue('')
-        }
-    }
-
-    const handleDelete = (id) => {
-        const deletedList = list.filter((todo) => todo.id !== id)
-        setList([...deletedList])
-    }
-
-    const setUpdate = (updatedTitle, id) => {
-        setList(
-            list.map((todo) => {
-                if (todo.id === id) {
-                    todo.value = updatedTitle
-                }
-
-                return todo
-            }),
-        )
-    }
+    const { list, title, setTitle, handleSubmit } = useContext(ListContext)
 
     return (
         <div className='App'>
@@ -46,24 +18,17 @@ function App() {
                     <Input
                         inputTypes='fill'
                         type='text'
-                        onChange={(e) => setValue(e.target.value)}
-                        value={value}
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
                     />
                     <Button type='submit'>
                         <MdAddTask className='icon' />
                     </Button>
                 </form>
 
-                <ul>
+                <ul className='lists'>
                     {list.map((item) => {
-                        return (
-                            <TodoList
-                                {...item}
-                                key={item.id}
-                                handleDelete={handleDelete}
-                                setUpdate={setUpdate}
-                            />
-                        )
+                        return <TodoList {...item} key={item.id} />
                     })}
                 </ul>
             </div>
