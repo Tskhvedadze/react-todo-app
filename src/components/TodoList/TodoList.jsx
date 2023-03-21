@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button } from '../button/Button'
+import { Button, Input } from '..'
 import { TbBan } from 'react-icons/tb'
 import { VscSymbolProperty, VscCheck } from 'react-icons/vsc'
 
@@ -28,12 +28,12 @@ export const TodoList = ({ handleDelete, id, value, setUpdate }) => {
                 <span className={`${taskIsDone && 'done'}`}>
                     {editing ? '' : value}
                 </span>
-                <input
+                <Input
                     type='text'
                     value={value}
                     onChange={(e) => setUpdate(e.target.value, id)}
                     onKeyDown={handleUpdatedDone}
-                    className={`${!editing ? 'viweMode' : 'textInput'}`}
+                    inputTypes={`${!editing ? 'hide' : 'edit'}`}
                 />
             </div>
             <div className='todoList__bnts'>

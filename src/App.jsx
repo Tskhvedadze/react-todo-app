@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { Button } from './button/Button'
-import { TodoList } from './todoList/TodoList'
+import { TodoList, Button, Input } from './components'
 
 import { MdAddTask } from 'react-icons/md'
+
 import './App.scss'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
         if (value !== '') {
             setList((prev) => {
-                return [...prev, { id: `${value}-${Date.now()}`, value }]
+                return [...prev, { id: `${Date.now()}`, value }]
             })
             setValue('')
         }
@@ -43,7 +43,8 @@ function App() {
             <div className='container'>
                 <h1>Todo List App</h1>
                 <form className='container__form' onSubmit={handleSubmit}>
-                    <input
+                    <Input
+                        inputTypes='fill'
                         type='text'
                         onChange={(e) => setValue(e.target.value)}
                         value={value}
@@ -54,11 +55,11 @@ function App() {
                 </form>
 
                 <ul>
-                    {list.map((todo) => {
+                    {list.map((item) => {
                         return (
                             <TodoList
-                                {...todo}
-                                key={todo.id}
+                                {...item}
+                                key={item.id}
                                 handleDelete={handleDelete}
                                 setUpdate={setUpdate}
                             />

@@ -1,0 +1,21 @@
+input {
+    font-size: 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 1rem;
+}
+
+.inputForFill {
+    width: 80%;
+}
+
+.inputForEdit {
+    display: flex;
+    width: auto;
+    border: 1px solid #dfdfdf;
+}
+
+.inputHide {
+    display: none;
+}

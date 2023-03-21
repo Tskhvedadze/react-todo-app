@@ -8,8 +8,11 @@
     cursor: pointer;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4);
 
-    &:hover {
-        animation: boing 600ms ease-in-out !important;
+    &:hover:active {
+        animation: boing 600ms ease-in-out;
+    }
+    &:hover:disabled {
+        animation: none;
     }
 }
 
