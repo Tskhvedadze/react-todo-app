@@ -1,7 +1,10 @@
 import { useContext } from 'react'
 
-import { ListContext } from './context/list.Context'
-import { TodoList, Button, Input } from './components'
+import { ListContext } from './context/listContext'
+
+import { TodoList } from './components/TodoList/TodoList'
+import { Button } from './components/Button/Button'
+import { Input } from './components/Input/Input'
 
 import { MdAddTask } from 'react-icons/md'
 
@@ -27,7 +30,7 @@ function App() {
                 </form>
 
                 <ul className='lists'>
-                    {list.map((item) => {
+                    {list.map((item: any) => {
                         return <TodoList {...item} key={item.id} />
                     })}
                 </ul>

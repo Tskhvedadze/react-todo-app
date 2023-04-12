@@ -1,14 +1,22 @@
-import { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
-import { Button, Input } from '..'
-import { ListContext } from '../../context/list.Context'
+import { Input } from '../Input/Input'
+import { Button } from '../Button/Button'
+
+import { ListContext } from '../../context/listContext'
 
 import { TbBan } from 'react-icons/tb'
 import { VscSymbolProperty, VscCheck } from 'react-icons/vsc'
 
 import './TodoList.scss'
 
-export const TodoList = ({ id, title, completed }) => {
+type TodoListProps = {
+    id: string
+    title: string
+    completed: boolean
+}
+
+export const TodoList = ({ id, title, completed }: TodoListProps) => {
     const [taskIsDone, setTaskIsDone] = useState(false)
     const [editing, setEditing] = useState(false)
 
@@ -20,7 +28,7 @@ export const TodoList = ({ id, title, completed }) => {
         }
     }
 
-    const handleUpdatedDone = (event) => {
+    const handleUpdatedDone = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
             setEditing(false)
         }
@@ -35,7 +43,9 @@ export const TodoList = ({ id, title, completed }) => {
                 <Input
                     type='text'
                     value={title}
-                    onChange={(e) => setUpdate(e.target.value, id)}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        setUpdate(event, id)
+                    }
                     onKeyDown={handleUpdatedDone}
                     inputTypes={`${!editing ? 'hide' : 'edit'}`}
                 />
