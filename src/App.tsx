@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 
 import { ListContext } from './context/listContext'
+import { ListItem } from './context/initContext'
 
 import { TodoList } from './components/TodoList/TodoList'
 import { Button } from './components/Button/Button'
@@ -21,7 +22,9 @@ function App() {
                     <Input
                         inputTypes='fill'
                         type='text'
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                        ) => setTitle(event.target.value)}
                         value={title}
                     />
                     <Button type='submit'>
@@ -30,7 +33,7 @@ function App() {
                 </form>
 
                 <ul className='lists'>
-                    {list.map((item: any) => {
+                    {list.map((item) => {
                         return <TodoList {...item} key={item.id} />
                     })}
                 </ul>

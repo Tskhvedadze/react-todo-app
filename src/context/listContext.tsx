@@ -17,7 +17,10 @@ export const ListProvider = ({ children }: ListProviderProps) => {
 
         if (title !== '') {
             setList((prev: ListItem[]) => {
-                return [{ id: `${Date.now()}`, title }, ...prev]
+                return [
+                    { id: `${Date.now()}`, title, completed: false },
+                    ...prev,
+                ]
             })
             setTitle('')
         }

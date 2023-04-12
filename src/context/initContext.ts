@@ -1,6 +1,7 @@
 export type ListItem = {
     id: string
     title: string
+    completed: boolean
 }
 
 export const initContext = {
